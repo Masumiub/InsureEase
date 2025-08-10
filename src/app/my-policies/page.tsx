@@ -20,10 +20,15 @@ export default function MyPoliciesPage() {
     const [policies, setPolicies] = useState<Policy[]>([]);
 
     useEffect(() => {
-        if (!session?.user?.email) return;
+        if (!session || !session.user || !session.user.email) return;
+
+
+        const userEmail = session.user.email;
+
+
         async function load() {
             const res = await fetch(
-                `/api/bookings?user=${encodeURIComponent(session.user.email!)}`
+                `/api/bookings?user=${encodeURIComponent(userEmail)}`
             );
             const data = await res.json();
             setPolicies(Array.isArray(data) ? data : data.bookings || []);
