@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Lottie from "lottie-react";
-import Img from '../../../public/assets/Animation - contact.json'
+import Img from '../../../public/assets/login.json.json'
 import Link from "next/link";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
@@ -41,7 +41,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className='w-full md:w-10/12 mx-auto'>
+    <div className="bg-gradient-to-b from-blue-50 to-base-100 pt-30">
+    <div className='w-full md:w-10/12 mx-auto '>
       <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
 
 
@@ -95,6 +96,7 @@ export default function LoginPage() {
 
       </div>
 
+    </div>
     </div>
   );
 }

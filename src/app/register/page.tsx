@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 import Lottie from "lottie-react";
-import Img from '../../../public/assets/Animation - contact.json'
+import Img from '../../../public/assets/Isometric data analysis.json'
 
 
 const schema = z.object({
@@ -37,7 +37,7 @@ export default function RegisterPage() {
   };
 
   return (
-
+    <div className="pt-30">
     <div className='w-full md:w-10/12 mx-auto'>
 
       <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
@@ -47,13 +47,13 @@ export default function RegisterPage() {
             <h1 className="text-4xl font-bold mb-4 text-center">Register</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
-              <input {...register("name")} placeholder="Name" className="w-full p-2 input rounded" />
+              <input {...register("name")} placeholder="Name" className="w-full p-2 input rounded text-black" />
               {errors.name && <p className="text-red-500">{errors.name.message}</p>}
 
-              <input {...register("email")} placeholder="Email" className="w-full p-2 input rounded" />
+              <input {...register("email")} placeholder="Email" className="w-full p-2 input rounded text-black" />
               {errors.email && <p className="text-red-500">{errors.email.message}</p>}
 
-              <input type="password" {...register("password")} placeholder="Password" className="w-full p-2 input rounded" />
+              <input type="password" {...register("password")} placeholder="Password" className="w-full p-2 input rounded text-black" />
               {errors.password && <p className="text-red-500">{errors.password.message}</p>}
 
               <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded-full btn shadow-none border-0">
@@ -86,6 +86,8 @@ export default function RegisterPage() {
         </div>
 
       </div>
+    </div>
+
     </div>
   );
 }

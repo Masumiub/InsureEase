@@ -11,20 +11,24 @@ export default function Footer() {
                 <aside>
                     <h1 className='font-semibold text-3xl'>InsureEase</h1>
                     <p>
-                        InsureEase Private Ltd.
+                        InsureEase Private Ltd. InsureEase helps you find the perfect <br />
+                        insurance plan quickly and easily.
 
                     </p>
 
-                    <nav>
+                    <nav className='mt-3'>
                         
-                        <div className='flex items-center gap-2'>
-                            <IoIosCall /> <p>+88 000 1111 2233 </p>
+                        <div className='flex items-center gap-2 mb-2'>
+                            <IoIosCall /> 
+                            <p>+88 000 1111 2233 </p>
                         </div>
-                        <div className='flex items-center gap-2'>
-                            <MdEmail /><p>studyRoom@contact.com</p>
+                        <div className='flex items-center gap-2 mb-2'>
+                            <MdEmail />
+                            <p>studyRoom@contact.com</p>
                         </div>
-                        <div className='flex items-center gap-2'>
-                            <FaLocationDot /><p>1216/1/A, Street No - 98, Gulshan <br />
+                        <div className='flex items-center gap-2 mb-2'>
+                            <FaLocationDot />
+                            <p>1216/1/A, Street No - 98, Gulshan <br />
                                 Dhaka, Bangladesh</p>
                         </div>
 

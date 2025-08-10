@@ -7,12 +7,30 @@ import Points from "@/components/Points";
 
 export default function Home() {
   return (
-    <div className="w-full md:w-10/12 mx-auto">
-      <Header></Header>
-      <Features></Features>
-      <Points></Points>
-      <Testimonials></Testimonials>
-      <FAQs></FAQs>
+    <div>
+      <div className="bg-blue-50">
+        <div className="w-full md:w-10/12 mx-auto">
+          <Header></Header>
+        </div>
+      </div>
+
+      <div className="w-full md:w-10/12 mx-auto">
+        <Features></Features>
+      </div>
+
+      <div className="bg-blue-50">
+        <div className="w-full md:w-10/12 mx-auto">
+          <Points></Points>
+        </div>
+
+      </div>
+
+      <div className="w-full md:w-10/12 mx-auto">
+        <Testimonials></Testimonials>
+        <FAQs></FAQs>
+      </div>
+
+
     </div>
   );
 }

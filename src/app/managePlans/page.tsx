@@ -188,7 +188,8 @@ export default function ManagePlansPage() {
                         <label className="label">
                             <span className="label-text">Type</span>
                         </label>
-                        <select {...register("type")} className="select select-bordered">
+
+                        <select {...register("type")} className="select select-bordered w-full">
                             <option value="">Select type</option>
                             <option value="health">Health</option>
                             <option value="car">Car</option>
@@ -207,7 +208,7 @@ export default function ManagePlansPage() {
                         <input
                             type="text"
                             {...register("title")}
-                            className="input input-bordered"
+                            className="input input-bordered w-full"
                         />
                         {errors.title && (
                             <p className="text-red-600">{errors.title.message}</p>
@@ -220,7 +221,7 @@ export default function ManagePlansPage() {
                         </label>
                         <textarea
                             {...register("coverage")}
-                            className="textarea textarea-bordered"
+                            className="textarea textarea-bordered w-full"
                             rows={3}
                         />
                         {errors.coverage && (
@@ -236,7 +237,7 @@ export default function ManagePlansPage() {
                             type="number"
                             step="0.01"
                             {...register("premium", { valueAsNumber: true })}
-                            className="input input-bordered"
+                            className="input input-bordered w-full"
                         />
                         {errors.premium && (
                             <p className="text-red-600">{errors.premium.message}</p>
@@ -250,7 +251,7 @@ export default function ManagePlansPage() {
                         <input
                             type="text"
                             {...register("term")}
-                            className="input input-bordered"
+                            className="input input-bordered w-full"
                         />
                         {errors.term && (
                             <p className="text-red-600">{errors.term.message}</p>
@@ -264,7 +265,7 @@ export default function ManagePlansPage() {
                         <input
                             type="text"
                             {...register("bannerUrl")}
-                            className="input input-bordered"
+                            className="input input-bordered w-full"
                         />
                         {errors.bannerUrl && (
                             <p className="text-red-600">{errors.bannerUrl.message}</p>
