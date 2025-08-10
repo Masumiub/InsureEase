@@ -1,9 +1,9 @@
 // app/api/bookings/route.ts
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import clientPromise from "../../lib/mongodb";
 import { z } from "zod";
+import { authOptions } from "@/app/lib/auth";
 //import { ObjectId } from "mongodb";
 
 const bookingSchema = z.object({

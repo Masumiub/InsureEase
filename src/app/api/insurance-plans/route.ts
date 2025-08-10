@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import clientPromise from "../../lib/mongodb";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { Session } from "next-auth";
 import { ObjectId } from "mongodb";
+import { authOptions } from "@/app/lib/auth";
 
 
 type InsurancePlan = {
