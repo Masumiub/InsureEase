@@ -6,6 +6,7 @@ import { Fade, Slide, Zoom } from "react-awesome-reveal";
 import { FaShieldAlt, FaHandsHelping, FaGlobe, FaUserTie, FaCode, FaChartLine } from "react-icons/fa";
 import Lottie from "lottie-react";
 import Img from '../../../public/assets/Insurance.json'
+import Image from "next/image";
 
 
 export default function AboutPage() {
@@ -126,9 +127,9 @@ export default function AboutPage() {
                             key={idx}
                             className="card bg-base-100 shadow-md  hover:shadow-lg transition px-6 py-12 bg-gradient-to-b from-blue-800 to-indigo-900 text-white"
                         >
-                            <img
+                            <Image
                                 src={member.image}
-                                alt={member.name}
+                                alt={member.name} width={32} height={32}
                                 className="w-32 h-32 object-cover rounded-full mx-auto mb-4 -4 -primary"
                             />
                             <div className="flex justify-center mb-2">{member.icon}</div>

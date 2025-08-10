@@ -11,12 +11,12 @@ const client = new MongoClient(uri, options);
 let clientPromise: Promise<MongoClient>;
 
 if (process.env.NODE_ENV === "development") {
-  // @ts-expect-error
+  // @ts-expect-error: Global variable for MongoClient in dev mode
   if (!global._mongoClientPromise) {
-    // @ts-expect-error
+    // @ts-expect-error: Assign MongoClient promise to global in dev mode
     global._mongoClientPromise = client.connect();
   }
-  // @ts-expect-error
+  // @ts-expect-error: Retrieve MongoClient promise from global in dev mode
   clientPromise = global._mongoClientPromise;
 } else {
   clientPromise = client.connect();

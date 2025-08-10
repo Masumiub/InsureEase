@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import Lottie from "lottie-react";
 import Img from '../../../public/assets/Animation - contact.json'
 import Link from "next/link";
-import { Fade } from "react-awesome-reveal";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 
@@ -80,7 +79,7 @@ export default function LoginPage() {
             </div>
 
             <div className="mt-3 text-center">
-              <p>Don't have any account? <Link href='/register'> <span className="text-blue-300">Register</span></Link> </p>
+              <p>Dont have any account? <Link href='/register'> <span className="text-blue-300">Register</span></Link> </p>
             </div>
           </div>
 

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ message: "User registered successfully" });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 }
