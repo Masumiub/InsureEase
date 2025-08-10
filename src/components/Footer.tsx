@@ -16,7 +16,7 @@ export default function Footer() {
                     </p>
 
                     <nav>
-                        <h6 className="footer-title">Contact</h6>
+                        
                         <div className='flex items-center gap-2'>
                             <IoIosCall /> <p>+88 000 1111 2233 </p>
                         </div>
