@@ -53,7 +53,7 @@ export default function MyPoliciesPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {policies.length === 0 ? <tr><p>No policies yet</p></tr> : (
+                        {policies.length === 0 ? <tr><td>No policies yet</td></tr> : (
 
                             
                                 policies.map((p, index) => (
