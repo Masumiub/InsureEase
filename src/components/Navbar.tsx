@@ -5,13 +5,34 @@ import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import Logo from '../../public/insurance.png'
 import Image from 'next/image';
-
+import Swal from 'sweetalert2';
 
 
 export default function Navbar() {
     const { data: session, status } = useSession();
     const isLoading = status === "loading";
 
+
+    const handleSignOut = async () => {
+        try {
+            await signOut({ redirect: false }); 
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Logged out successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } catch (error) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: `${error}`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    };
 
     return (
         <div className='bg-base-200 bg-gradient-to-r from-blue-800 to-indigo-900 text-white'>
@@ -79,7 +100,7 @@ export default function Navbar() {
                     ) : session ? (
                         <>
                             <span className="mr-4">Hi, {session.user?.name || "User"}</span>
-                            <button onClick={() => signOut()} className="btn btn-outline rounded-full">
+                            <button onClick={handleSignOut} className="btn btn-outline rounded-full">
                                 Logout
                             </button>
                         </>

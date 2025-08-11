@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import LoginPage from "../login/page";
 import LoadingState from "@/components/LoadingState";
+import Swal from "sweetalert2";
 
 type Booking = {
   _id: string;
@@ -49,6 +50,13 @@ export default function ManageRequestPage() {
     });
 
     if (res.ok) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Booking Status updated successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
       setBookings((prev) =>
         prev.map((b) => (b._id === id ? { ...b, status: newStatus } : b))
       );

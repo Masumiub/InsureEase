@@ -7,6 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-hot-toast"; // Optional, for notifications
 import LoadingState from "@/components/LoadingState";
+import Swal from "sweetalert2";
 
 type InsurancePlan = {
     _id: string;
@@ -97,11 +98,25 @@ export default function ManagePlansPage() {
             });
             const json = await res.json();
             if (!res.ok) throw new Error(json.error || "Failed to update plan");
-            toast.success("Plan updated successfully!");
+            //toast.success("Plan updated successfully!");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Plan updated successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
             closeEditModal();
             fetchPlans();
         } catch (err) {
-            toast.error((err as Error).message);
+            //toast.error((err as Error).message);
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: `${err}`,
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     }
 
@@ -141,10 +156,10 @@ export default function ManagePlansPage() {
                             <th>#</th>
                             <th>Type</th>
                             <th>Title</th>
-                            
+
                             <th>Premium</th>
                             <th>Term</th>
-                            
+
                             <th>Actions</th>
                         </tr>
                     </thead>

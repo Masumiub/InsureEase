@@ -25,6 +25,7 @@
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "run": "^1.5.0",
+    "sweetalert2": "^11.22.3",
     "swiper": "^11.2.10",
     "zod": "^4.0.15"
   },
