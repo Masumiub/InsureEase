@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import LoginPage from "../login/page";
+import LoadingState from "@/components/LoadingState";
 
 type Booking = {
   _id: string;
@@ -54,7 +55,7 @@ export default function ManageRequestPage() {
     }
   };
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <LoadingState></LoadingState>;
   if (!session || session.user?.role !== "admin") return <LoginPage></LoginPage>;
 
   return (

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-hot-toast"; // Optional, for notifications
+import LoadingState from "@/components/LoadingState";
 
 type InsurancePlan = {
     _id: string;
@@ -120,7 +121,7 @@ export default function ManagePlansPage() {
         }
     }
 
-    if (status === "loading") return <p>Loading...</p>;
+    if (status === "loading") return <LoadingState></LoadingState>;
 
     if (!session || session.user?.role !== "admin") {
         return <p className="text-center text-red-600 mt-10">Forbidden: Admins only</p>;

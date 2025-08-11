@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import LoadingState from "@/components/LoadingState";
 
 const schema = z.object({
   type: z.enum(["health", "car", "travel", "life"])
@@ -38,7 +39,7 @@ export default function CreateInsurancePlan() {
     resolver: zodResolver(schema),
   });
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <LoadingState></LoadingState>;
 
   if (!session || session.user?.role !== "admin") {
     return <p className="text-center text-red-600 mt-10">Forbidden: Admins only</p>;

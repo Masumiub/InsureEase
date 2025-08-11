@@ -3,6 +3,9 @@
 import React from 'react'
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import Logo from '../../public/insurance.png'
+import Image from 'next/image';
+
 
 
 export default function Navbar() {
@@ -43,6 +46,7 @@ export default function Navbar() {
 
                         </ul>
                     </div>
+                    <Link href='/'> <Image src={Logo} width={40} alt='logo'></Image> </Link>
                     <Link href="/" className="btn btn-ghost text-xl">InsureEase</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">

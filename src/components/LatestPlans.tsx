@@ -79,7 +79,7 @@ export default function LatestPlans() {
                 <p className="text-blue-600 font-bold">${plan.premium}</p>
                 <Link
                   href={`/insurance/${plan._id}`}
-                  className="btn btn-sm btn-outline rounded-full"
+                  className="btn btn-sm btn-primary rounded-full"
                 >
                   View Details
                 </Link>

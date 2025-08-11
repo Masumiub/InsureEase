@@ -1,14 +1,19 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { FaFacebook, FaGoogle, FaLocationDot, FaTwitter } from 'react-icons/fa6'
 import { IoIosCall } from 'react-icons/io'
 import { LuInstagram } from 'react-icons/lu'
 import { MdEmail } from 'react-icons/md'
+import Logo from '../../public/insurance.png'
+
 
 export default function Footer() {
     return (
         <div className='bg-base-200 mt-30 bg-gradient-to-r from-blue-800 to-indigo-900 text-white'>
             <footer className="footer sm:footer-horizontal w-full md:w-10/12 mx-auto  py-30 px-10">
                 <aside>
+                    <Link href='/'> <Image src={Logo} width={50} alt='logo'></Image> </Link>
                     <h1 className='font-semibold text-3xl'>InsureEase</h1>
                     <p>
                         InsureEase Private Ltd. InsureEase helps you find the perfect <br />
@@ -17,9 +22,9 @@ export default function Footer() {
                     </p>
 
                     <nav className='mt-3'>
-                        
+
                         <div className='flex items-center gap-2 mb-2'>
-                            <IoIosCall /> 
+                            <IoIosCall />
                             <p>+88 000 1111 2233 </p>
                         </div>
                         <div className='flex items-center gap-2 mb-2'>
@@ -32,13 +37,6 @@ export default function Footer() {
                                 Dhaka, Bangladesh</p>
                         </div>
 
-                        <p className='footer-title mt-4'>Follow Us:</p>
-                        <div className='flex gap-2'>
-                            <FaFacebook size={20} />
-                            <FaGoogle size={20} />
-                            <LuInstagram size={20} />
-                            <FaTwitter size={20} />
-                        </div>
                     </nav>
                 </aside>
                 <nav>
@@ -60,7 +58,16 @@ export default function Footer() {
                     <a className="link link-hover">Terms of use</a>
                     <a className="link link-hover">Privacy policy</a>
                     <a className="link link-hover">Cookie policy</a>
+
+                    <p className='footer-title mt-4'>Follow Us:</p>
+                    <div className='flex gap-2'>
+                        <FaFacebook size={20} />
+                        <FaGoogle size={20} />
+                        <LuInstagram size={20} />
+                        <FaTwitter size={20} />
+                    </div>
                 </nav>
+
             </footer>
         </div>
     )

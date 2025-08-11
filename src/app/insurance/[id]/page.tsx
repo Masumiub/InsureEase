@@ -151,7 +151,7 @@ export default function InsurancePlanDetailsPage() {
             }
 
             closeApplyModal();
-            reset(); 
+            reset();
 
             router.push("/my-policies");
         } catch (err: unknown) {
@@ -169,115 +169,121 @@ export default function InsurancePlanDetailsPage() {
     if (!plan) return <p className="text-center py-10">Plan not found</p>;
 
     return (
-        <div className="w-full md:w-10/12 mx-auto mb-20">
-            <Slide direction="left" triggerOnce>
-                <div className=" mx-auto p-6 rounded">
-                    <div className="flex flex-col items-center md:flex-row gap-10">
-                        <div className="w-full md:w-2/3">
-                            <h1 className="text-5xl font-bold mb-6">{plan.title}</h1>
-                            <p className="mb-2"><strong>Coverage:</strong> {plan.coverage}</p>
-                            <p className="mb-2"><strong>Term:</strong> {plan.term}</p>
-                            <p className="mb-2"><strong>Type:</strong> {plan.type}</p>
+        <div>
+            <div className="bg-blue-50">
+                <div className="w-full md:w-10/12 mx-auto mb-20">
+                <Slide direction="left" triggerOnce>
+                    <div className=" mx-auto p-6 rounded">
+                        <div className="flex flex-col items-center md:flex-row gap-10">
+                            <div className="w-full md:w-2/3">
+                                <h1 className="text-5xl font-bold mb-6">{plan.title}</h1>
+                                <p className="mb-2"><strong>Coverage:</strong> {plan.coverage}</p>
+                                <p className="mb-2"><strong>Term:</strong> {plan.term}</p>
+                                <p className="mb-2"><strong>Type:</strong> {plan.type}</p>
 
-                            {status === "loading" ? (
-                                <button className="btn btn-disabled mt-4">Checking...</button>
-                            ) : session ? (
-                                <button className="btn btn-primary mt-4 rounded-full" onClick={openApplyModal}>
-                                    Apply Now
-                                </button>
-                            ) : (
-                                <button
-                                    className="btn btn-outline mt-4"
-                                    onClick={() => signIn()}
-                                >
-                                    Login to apply
-                                </button>
-                            )}
-                        </div>
-                        <div className="w-full md:w-1/3">
-                            <Image
-                                src={plan.bannerUrl}
-                                alt={plan.title}
-                                width={800}
-                                height={400}
-                                className="rounded mb-6 object-cover"
-                            />
-                            <div className="bg-base-200 text-center py-5 rounded-2xl shadow-lg">
-                                <p className="text-2xl text-primary"><strong>Premium:</strong> {plan.premium}</p>
+                                {status === "loading" ? (
+                                    <button className="btn btn-disabled mt-4">Checking...</button>
+                                ) : session ? (
+                                    <button className="btn btn-primary mt-4 rounded-full" onClick={openApplyModal}>
+                                        Apply Now
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="btn btn-outline mt-4"
+                                        onClick={() => signIn()}
+                                    >
+                                        Login to apply
+                                    </button>
+                                )}
                             </div>
+                            <div className="w-full md:w-1/3">
+                                <Image
+                                    src={plan.bannerUrl}
+                                    alt={plan.title}
+                                    width={800}
+                                    height={400}
+                                    className="rounded-2xl mb-6 object-cover"
+                                />
+                                <div className="bg-primary text-center py-5 rounded-2xl shadow-lg">
+                                    <p className="text-2xl text-white"><strong>Premium:</strong> {plan.premium}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </Slide>
+                </div>
+            </div>
+
+            <div className="w-full md:w-10/12 mx-auto mb-20">
+                <Features></Features>
+                <Points></Points>
+
+                <dialog id="apply_modal" className="modal">
+                    <form
+                        method="dialog"
+                        className="modal-box max-w-xl"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
+                        <h3 className="font-bold text-lg mb-2">Apply for: {plan.title}</h3>
+                        <p className="text-sm text-gray-600 mb-4">Please complete the form to request a quote/booking.</p>
+
+                        <div className="grid grid-cols-1 gap-2">
+                            <label className="label">
+                                <span className="label-text">Full name</span>
+                            </label>
+                            <input className="input input-bordered w-full" {...register("fullName", { required: true })} />
+                            {errors.fullName && <p className="text-red-600 text-sm">{errors.fullName.message}</p>}
+
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input className="input input-bordered w-full" {...register("email", { required: true })} />
+                            {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
+
+                            <label className="label">
+                                <span className="label-text">Age</span>
+                            </label>
+                            <input type="number" className="input input-bordered w-full" {...register("age", { valueAsNumber: true })} />
+                            {errors.age && <p className="text-red-600 text-sm">{errors.age.message}</p>}
+
+                            <label className="label">
+                                <span className="label-text">Annual Income</span>
+                            </label>
+                            <input type="number" className="input input-bordered w-full" {...register("income", { valueAsNumber: true })} />
+                            {errors.income && <p className="text-red-600 text-sm">{errors.income.message}</p>}
+
+                            {/* Plan-specific fields */}
+                            {plan.type === "car" && (
+                                <>
+                                    <label className="label"><span className="label-text">Car Type</span></label>
+                                    <input className="input input-bordered w-full" {...register("carType")} />
+                                    {errors.carType && <p className="text-red-600 text-sm">{errors.carType.message}</p>}
+                                </>
+                            )}
+
+                            {plan.type === "travel" && (
+                                <>
+                                    <label className="label"><span className="label-text">Trip Date</span></label>
+                                    <input type="date" className="input input-bordered w-full" {...register("tripDate")} />
+                                    {errors.tripDate && <p className="text-red-600 text-sm">{errors.tripDate.message}</p>}
+                                </>
+                            )}
+
+                            <label className="label"><span className="label-text">Notes (optional)</span></label>
+                            <textarea className="textarea textarea-bordered w-full" {...register("notes")}></textarea>
                         </div>
 
-                    </div>
-                </div>
-            </Slide>
+                        <div className="modal-action mt-4">
+                            <button type="submit" className="btn btn-primary rounded-full" disabled={submitting}>
+                                {submitting ? "Submitting..." : "Submit Application"}
+                            </button>
+                            <button type="button" className="btn rounded-full" onClick={closeApplyModal}>Cancel</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
 
-            <Features></Features>
-            <Points></Points>
-
-
-            <dialog id="apply_modal" className="modal">
-                <form
-                    method="dialog"
-                    className="modal-box max-w-xl"
-                    onSubmit={handleSubmit(onSubmit)}
-                >
-                    <h3 className="font-bold text-lg mb-2">Apply for: {plan.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4">Please complete the form to request a quote/booking.</p>
-
-                    <div className="grid grid-cols-1 gap-2">
-                        <label className="label">
-                            <span className="label-text">Full name</span>
-                        </label>
-                        <input className="input input-bordered w-full" {...register("fullName", { required: true })} />
-                        {errors.fullName && <p className="text-red-600 text-sm">{errors.fullName.message}</p>}
-
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input className="input input-bordered w-full" {...register("email", { required: true })} />
-                        {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
-
-                        <label className="label">
-                            <span className="label-text">Age</span>
-                        </label>
-                        <input type="number" className="input input-bordered w-full" {...register("age", { valueAsNumber: true })} />
-                        {errors.age && <p className="text-red-600 text-sm">{errors.age.message}</p>}
-
-                        <label className="label">
-                            <span className="label-text">Annual Income</span>
-                        </label>
-                        <input type="number" className="input input-bordered w-full" {...register("income", { valueAsNumber: true })} />
-                        {errors.income && <p className="text-red-600 text-sm">{errors.income.message}</p>}
-
-                        {/* Plan-specific fields */}
-                        {plan.type === "car" && (
-                            <>
-                                <label className="label"><span className="label-text">Car Type</span></label>
-                                <input className="input input-bordered w-full" {...register("carType")} />
-                                {errors.carType && <p className="text-red-600 text-sm">{errors.carType.message}</p>}
-                            </>
-                        )}
-
-                        {plan.type === "travel" && (
-                            <>
-                                <label className="label"><span className="label-text">Trip Date</span></label>
-                                <input type="date" className="input input-bordered w-full" {...register("tripDate")} />
-                                {errors.tripDate && <p className="text-red-600 text-sm">{errors.tripDate.message}</p>}
-                            </>
-                        )}
-
-                        <label className="label"><span className="label-text">Notes (optional)</span></label>
-                        <textarea className="textarea textarea-bordered w-full" {...register("notes")}></textarea>
-                    </div>
-
-                    <div className="modal-action mt-4">
-                        <button type="submit" className="btn btn-primary rounded-full" disabled={submitting}>
-                            {submitting ? "Submitting..." : "Submit Application"}
-                        </button>
-                        <button type="button" className="btn rounded-full" onClick={closeApplyModal}>Cancel</button>
-                    </div>
-                </form>
-            </dialog>
         </div>
     );
 }
