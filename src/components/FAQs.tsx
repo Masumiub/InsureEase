@@ -19,6 +19,16 @@ const faqs = [
     answer:
       'Go to "My Account" settings and select "Edit Profile" to make changes.',
   },
+    {
+    question: "How do I book for insurance?",
+    answer:
+      'Go to "My Account" settings and select "Edit Profile" to make changes.',
+  },
+      {
+    question: "What are the charges?",
+    answer:
+      'Go to "My Account" settings and select "Edit Profile" to make changes.',
+  },
 ];
 
 export default function FAQs() {

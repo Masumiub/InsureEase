@@ -77,7 +77,7 @@ export default function InsurancePlansListPage() {
                     <h2 className="text-5xl font-bold mb-8 text-center">Our Insurance Plans</h2>
                     <p className="text-center">InsureEase helps you find the perfect insurance plan quickly and easily. Learn why Health Savings Accounts are a critical benefit in employee retention.</p>
 
-                    <div className="flex flex-col md:flex-row items-center justify-between my-8">
+                    <div className="flex flex-col md:flex-row items-center justify-between my-8 gap-10">
                         <label className="input">
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g

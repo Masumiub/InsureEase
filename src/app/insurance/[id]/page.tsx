@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler } from "react-hook-form";
+import LoadingState from "@/components/LoadingState";
 
 type InsurancePlan = {
     _id: string;
@@ -164,7 +165,7 @@ export default function InsurancePlanDetailsPage() {
 
 
 
-    if (loading) return <p className="text-center py-10">Loading...</p>;
+    if (loading) return <LoadingState></LoadingState>;
     if (error) return <p className="text-center py-10 text-red-600">{error}</p>;
     if (!plan) return <p className="text-center py-10">Plan not found</p>;
 
