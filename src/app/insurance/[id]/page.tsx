@@ -1,5 +1,5 @@
 // app/insurance/[id]/page.tsx
-import BookingForm from "./BookingForm"; // client component
+import BookingForm from "./BookingForm";
 import Image from "next/image";
 import Features from "@/components/Features";
 import Points from "@/components/Points";
@@ -17,19 +17,18 @@ type InsurancePlan = {
 
 export const revalidate = 60; // ISR: revalidate every 60 seconds
 
-type Props = {
+// ✅ no need to define Props manually
+export default async function InsurancePlanPage({
+  params, // Next.js provides this automatically
+}: {
   params: { id: string };
-};
+}) {
+  const id = params.id;
 
-export default async function InsurancePlanPage({ params }: Props) {
-  const id = params.id; // ✅ no await here
-
-  // fetch plan with ISR
   const res = await fetch(
-    `http://localhost:3000/api/insurance-plans/${id}`,
-    { next: { revalidate: 60 } } // ISR
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/insurance-plans/${id}`, // use env variable for production
+    { next: { revalidate: 60 } }
   );
-
   const data = await res.json();
   const plan: InsurancePlan | null = data.plan || null;
 
@@ -77,14 +76,13 @@ export default async function InsurancePlanPage({ params }: Props) {
   );
 }
 
-// generate static paths for SSG/ISR
+// generate static params for SSG/ISR
 export async function generateStaticParams() {
-  const res = await fetch("http://localhost:3000/api/insurance-plans");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/insurance-plans`);
   const plans: InsurancePlan[] = await res.json();
 
-  return plans.map((plan) => ({ id: plan._id })); // correct shape: { id: string }
+  return plans.map((plan) => ({ id: plan._id }));
 }
-
 
 
 // "use client";
