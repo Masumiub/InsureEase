@@ -104,8 +104,8 @@ export default function CreateInsurancePlan() {
   }
 
   return (
-    <div className="max-w-lg mx-auto p-6 rounded shadow mt-10">
-      <h1 className="text-4xl font-bold mb-6 text-center">Create Insurance Plan</h1>
+    <div className="max-w-lg p-6 rounded shadow">
+      <h1 className="text-3xl mb-6">Create Insurance Plan</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <label className="block">

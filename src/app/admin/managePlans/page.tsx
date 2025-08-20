@@ -143,8 +143,8 @@ export default function ManagePlansPage() {
     }
 
     return (
-        <div className="w-full md:w-10/12 mx-auto my-20">
-            <h1 className="text-5xl font-bold text-center mb-20">Manage Insurance Plans</h1>
+        <div className="w-full mx-auto p-6">
+            <h1 className="text-3xl mb-20">Manage Insurance Plans</h1>
 
             {loading && <p>Loading plans...</p>}
             {error && <p className="text-red-600 mb-4">{error}</p>}

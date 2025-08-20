@@ -15,7 +15,7 @@ export default function Navbar() {
 
     const handleSignOut = async () => {
         try {
-            await signOut({ redirect: false }); 
+            await signOut({ redirect: false });
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -36,7 +36,7 @@ export default function Navbar() {
 
     return (
         <div className='bg-base-200 bg-gradient-to-r from-blue-800 to-indigo-900 text-white'>
-            <div className="navbar w-full md:w-10/12 mx-auto">
+            <div className="navbar w-full mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,16 +46,7 @@ export default function Navbar() {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><Link href="/">Home</Link></li>
-                            <li><Link href='/AllInsurances'>Insurances</Link></li>
-                            {
-                                session?.user?.role == 'admin' && (
-                                    <>
-                                        <li><Link href='/createInsurencePlan'>Create Insurance Plan</Link></li>
-                                        <li><Link href='/managePlans'>Manage Plans</Link></li>
-                                        <li><Link href='/manageRequest'>Manage Requests</Link></li>
-                                    </>
-                                )
-                            }
+                            <li><Link href='/insurance'>Insurances</Link></li>
 
                             {
                                 session?.user?.role == 'user' && (
@@ -73,16 +64,7 @@ export default function Navbar() {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link href="/">Home</Link></li>
-                        <li><Link href='/AllInsurances'>Insurances</Link></li>
-                        {
-                            session?.user?.role == 'admin' && (
-                                <>
-                                    <li><Link href='/createInsurencePlan'>Create Insurance Plan</Link></li>
-                                    <li><Link href='/managePlans'>Manage Plans</Link></li>
-                                    <li><Link href='/manageRequest'>Manage Requests</Link></li>
-                                </>
-                            )
-                        }
+                        <li><Link href='/insurance'>Insurances</Link></li>
 
                         {
                             session?.user?.role == 'user' && (
@@ -95,11 +77,20 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
+
                     {isLoading ? (
                         <span className="loading loading-spinner loading-sm"></span>
                     ) : session ? (
                         <>
                             <span className="mr-4">Hi, {session.user?.name || "User"}</span>
+                            {
+                                session?.user?.role == 'admin' && (
+                                    <>
+                                        <Link href='/admin' className='btn rounded-full mr-3'>Dashboard</Link>
+                                    </>
+                                )
+                            }
                             <button onClick={handleSignOut} className="btn btn-outline rounded-full">
                                 Logout
                             </button>

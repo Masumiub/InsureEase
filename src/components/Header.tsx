@@ -40,10 +40,10 @@ export default function Header() {
             </div>
             
             <h3 className="text-2xl mb-3">Manage your Insurance benefits</h3>
-            <h1 className="text-5xl font-extrabold mb-6 drop-shadow-lg">
+            <h1 className="text-5xl font-extrabold mb-6">
               Protect What Matters Most
             </h1>
-            <p className=" mx-auto text-lg mb-8 drop-shadow-md">
+            <p className=" mx-auto text-lg mb-8">
               InsureEase helps you find the perfect insurance plan quickly and easily. Learn why Health Savings Accounts are a critical benefit in employee retention and a great tool to promote financial health and well-being.
             </p>
             <button className="btn btn-primary btn-lg shadow-lg hover:scale-105 transition-transform rounded-full">

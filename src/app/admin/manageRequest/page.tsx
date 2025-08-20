@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
-import LoginPage from "../login/page";
+import LoginPage from "../../login/page";
 import LoadingState from "@/components/LoadingState";
 import Swal from "sweetalert2";
 
@@ -67,8 +67,8 @@ export default function ManageRequestPage() {
   if (!session || session.user?.role !== "admin") return <LoginPage></LoginPage>;
 
   return (
-    <div className="w-full md:w-10/12 mx-auto p-6 my-20">
-      <h1 className="text-5xl text-center font-bold mb-20">Manage Requests</h1>
+    <div className="w-full mx-auto p-6">
+      <h1 className="text-3xl mb-20">Manage Requests</h1>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           <thead>
