@@ -3,9 +3,9 @@ import InsurancePlansList from "./InsurancePlansList";
 
 export default async function InsurancePage() {
   // fetch runs on server
-  const res = await fetch("http://localhost:3000/api/insurance-plans", {
-    next: { revalidate: 60 }, 
-  });
+const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/insurance-plans`, {
+  next: { revalidate: 60 },
+});
 
   const plans = await res.json();
 
