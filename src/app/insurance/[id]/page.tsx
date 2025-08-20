@@ -22,11 +22,11 @@ type Props = {
 };
 
 export default async function InsurancePlanPage({ params }: Props) {
-  const id = params.id;
+  const id = params.id; // ✅ no await here
 
   // fetch plan with ISR
   const res = await fetch(
-    `http://localhost:3000/api/insurance-plans/${id}`, 
+    `http://localhost:3000/api/insurance-plans/${id}`,
     { next: { revalidate: 60 } } // ISR
   );
 
@@ -81,6 +81,7 @@ export default async function InsurancePlanPage({ params }: Props) {
 export async function generateStaticParams() {
   const res = await fetch("http://localhost:3000/api/insurance-plans");
   const plans: InsurancePlan[] = await res.json();
+
   return plans.map((plan) => ({ id: plan._id })); // correct shape: { id: string }
 }
 
