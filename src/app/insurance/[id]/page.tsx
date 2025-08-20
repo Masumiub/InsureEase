@@ -15,20 +15,21 @@ type InsurancePlan = {
   bannerUrl: string;
 };
 
-export const revalidate = 60; // ISR: revalidate every 60 seconds
+export const revalidate = 60; // ISR: 60s
 
-// ✅ no need to define Props manually
 export default async function InsurancePlanPage({
-  params, // Next.js provides this automatically
+  params,
 }: {
   params: { id: string };
 }) {
+  // ✅ do NOT await params.id
   const id = params.id;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/insurance-plans/${id}`, // use env variable for production
-    { next: { revalidate: 60 } }
-  );
+  // Use absolute URL for production
+  const res = await fetch(`http://localhost:3000/api/insurance-plans/${id}`, {
+    next: { revalidate: 60 },
+  });
+
   const data = await res.json();
   const plan: InsurancePlan | null = data.plan || null;
 
@@ -76,9 +77,9 @@ export default async function InsurancePlanPage({
   );
 }
 
-// generate static params for SSG/ISR
+// SSG/ISR: generate paths
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/insurance-plans`);
+  const res = await fetch(`http://localhost:3000/api/insurance-plans`);
   const plans: InsurancePlan[] = await res.json();
 
   return plans.map((plan) => ({ id: plan._id }));
