@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -6,12 +7,21 @@ import { IoIosCall } from 'react-icons/io'
 import { LuInstagram } from 'react-icons/lu'
 import { MdEmail } from 'react-icons/md'
 import Logo from '../../public/insurance.png'
+import { usePathname } from 'next/navigation'
 
 
 export default function Footer() {
+
+    const pathname = usePathname();
+
+    // If inside /admin pages → hide footer
+    if (pathname.startsWith('/admin')) {
+        return null;
+    }
+
     return (
         <div className='bg-base-200 mt-30 bg-gradient-to-r from-blue-800 to-indigo-900 text-white'>
-            <footer className="footer sm:footer-horizontal w-full md:w-10/12 mx-auto  py-30 px-10">
+            <footer className="footer sm:footer-horizontal w-full  mx-auto  py-30 px-10">
                 <aside>
                     <Link href='/'> <Image src={Logo} width={50} alt='logo'></Image> </Link>
                     <h1 className='font-semibold text-3xl'>InsureEase</h1>

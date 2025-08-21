@@ -8,7 +8,7 @@ export default function Points() {
     return (
         <div className="flex flex-col md:flex-row items-center gap-10">
 
-            <div className="w-full md:w-1/2">
+            <div className="w-full md:w-1/2 text-blue-950">
                 <h2 className="text-5xl font-bold mt-16 mb-8">Why Trust Us?</h2>
                 <ul>
                     <div className='flex gap-2 items-center mb-2'>

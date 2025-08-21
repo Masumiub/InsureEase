@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import Logo from '../../public/insurance.png'
@@ -11,6 +11,21 @@ import Swal from 'sweetalert2';
 export default function Navbar() {
     const { data: session, status } = useSession();
     const isLoading = status === "loading";
+
+    const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    };
 
 
     const handleSignOut = async () => {
@@ -77,7 +92,11 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end">
-
+                    <div className="form-control mt-1 mr-2">
+                        <label className="label cursor-pointer">
+                            <input type="checkbox" className="toggle theme-controller" onChange={toggleTheme} checked={theme === 'dark'} />
+                        </label>
+                    </div>
 
                     {isLoading ? (
                         <span className="loading loading-spinner loading-sm"></span>
@@ -100,7 +119,7 @@ export default function Navbar() {
                             <Link href="/login" className="btn btn-outline mr-2 rounded-full">
                                 Login
                             </Link>
-                            <Link href="/register" className="btn bg-blue-200 rounded-full border-0 shadow-none">
+                            <Link href="/register" className="btn bg-blue-200 rounded-full border-0 shadow-none text-black">
                                 Register
                             </Link>
                         </>

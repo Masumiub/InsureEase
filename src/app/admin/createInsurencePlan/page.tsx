@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoadingState from "@/components/LoadingState";
+import Swal from "sweetalert2";
 
 const schema = z.object({
   type: z.enum(["health", "car", "travel", "life"])
@@ -96,10 +97,24 @@ export default function CreateInsurancePlan() {
 
     const json = await res.json();
     if (res.ok) {
-      alert("Insurance Plan Created!");
-      router.push("/");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Insurance Plan Created",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      //alert("Insurance Plan Created!");
+
     } else {
-      alert(json.error || "Failed to create plan");
+      //alert(json.error || "Failed to create plan");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Failed to create plan!",
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   }
 
@@ -134,7 +149,7 @@ export default function CreateInsurancePlan() {
         <label className="block">
           Coverage
           <textarea
-            
+
             {...register("coverage")}
             className="textarea w-full mt-1"
             placeholder="Coverage details"

@@ -108,7 +108,7 @@ export default function AdminHomePage() {
       {/* User Card */}
       <div className="card bg-base-100 shadow">
         <div className="card-body">
-          <h2 className="card-title">Admin Profile</h2>
+          <h2 className="card-title text-2xl">Profile</h2>
           <div className="mt-2">
             <p><span className="font-semibold">Name:</span> {session.user?.name ?? "-"}</p>
             <p><span className="font-semibold">Email:</span> {session.user?.email ?? "-"}</p>

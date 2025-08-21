@@ -42,7 +42,7 @@ export default function ContactPage() {
                 <div className="w-full md:w-10/12 mx-auto">
                 {/* Hero */}
                 <Fade triggerOnce direction="down">
-                    <h1 className="text-5xl font-bold text-center mb-4">Contact Us</h1>
+                    <h1 className="text-5xl font-bold text-center mb-4 text-blue-950">Contact Us</h1>
                     <p className="text-center text-gray-600 max-w-2xl mx-auto">
                         Have questions or need assistance? Our friendly team is here to help you.
                     </p>

@@ -54,7 +54,7 @@ export default function AboutPage() {
 
     return (
         <div>
-            <div className="bg-blue-50 mx-auto pb-20">
+            <div className="bg-blue-50 mx-auto pb-20 text-blue-950">
                 {/* Hero */}
                 <Fade direction="down" triggerOnce>
                     <h1 className="text-5xl font-bold text-center pt-20 mb-15">About Us</h1>
@@ -68,7 +68,7 @@ export default function AboutPage() {
             <div className="w-full md:w-10/12 mx-auto mb-20">
                 <Fade direction="down" triggerOnce>
                     <h1 className="text-3xl font-bold text-center mt-20 mb-15">Who We Are</h1>
-                    <p className="text-lg text-gray-600 mx-auto">
+                    <p className="text-lg mx-auto">
                         InsureEase is a forward-thinking insurance solutions provider dedicated to making coverage simple, transparent, and accessible. Our mission is to remove the complexity from insurance by offering straightforward plans that meet real-life needs. Backed by a passionate team of industry experts, we blend technology, expertise, and customer-first values to ensure you get the protection you deserve — without the confusion.
                     </p>
                 </Fade>
@@ -93,7 +93,7 @@ export default function AboutPage() {
 
                 <Fade direction="down" triggerOnce>
                     <h1 className="text-3xl font-bold text-center mt-20 mb-15">What We Do</h1>
-                    <p className="text-lg text-gray-600  mx-auto">
+                    <p className="text-lg  mx-auto">
                         We specialize in offering a wide range of insurance plans tailored to health, life, travel, and vehicle protection. From affordable premiums to comprehensive coverage, our services are designed to fit both personal and business needs. We leverage modern digital platforms to help you compare, choose, and manage your policies with ease — anytime, anywhere.
                     </p>
                 </Fade>

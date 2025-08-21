@@ -35,7 +35,7 @@ export default function InsuranceCategory() {
         {categories.map((category, index) => (
           <Fade key={index} direction="up" triggerOnce>
             <div
-              className="bg-white rounded-2xl shadow-lg p-6 text-center transform transition-transform duration-300 hover:-translate-y-3 hover:scale-105 cursor-pointer"
+              className="bg-base-100 rounded-2xl shadow-lg p-6 text-center transform transition-transform duration-300 hover:-translate-y-3 hover:scale-105 cursor-pointer"
             >
               <div className="flex justify-center mb-4">{category.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{category.name}</h3>

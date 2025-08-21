@@ -172,54 +172,59 @@ export default function InsurancePlanDetailsPage() {
 
     return (
         <div>
-            <div className="bg-blue-50">
+            <div className="bg-blue-50 py-20 text-blue-950">
                 <div className="w-full md:w-10/12 mx-auto mb-20">
-                <Slide direction="left" triggerOnce>
-                    <div className=" mx-auto p-6 rounded">
-                        <div className="flex flex-col items-center md:flex-row gap-10">
-                            <div className="w-full md:w-2/3">
-                                <h1 className="text-5xl font-bold mb-6">{plan.title}</h1>
-                                <p className="mb-2"><strong>Coverage:</strong> {plan.coverage}</p>
-                                <p className="mb-2"><strong>Term:</strong> {plan.term}</p>
-                                <p className="mb-2"><strong>Type:</strong> {plan.type}</p>
+                    <Slide direction="left" triggerOnce>
+                        <div className=" mx-auto p-6 rounded">
+                            <div className="flex flex-col items-center md:flex-row gap-10">
+                                <div className="w-full md:w-2/3">
+                                    <h1 className="text-5xl font-bold mb-6">{plan.title}</h1>
+                                    <p className="mb-2"><strong>Coverage:</strong> {plan.coverage}</p>
+                                    <p className="mb-2"><strong>Term:</strong> {plan.term}</p>
+                                    <p className="mb-2"><strong>Type:</strong> {plan.type}</p>
 
-                                {status === "loading" ? (
-                                    <button className="btn btn-disabled mt-4">Checking...</button>
-                                ) : session ? (
-                                    <button className="btn btn-primary mt-4 rounded-full" onClick={openApplyModal}>
-                                        Apply Now
-                                    </button>
-                                ) : (
-                                    <button
-                                        className="btn btn-outline mt-4"
-                                        onClick={() => signIn()}
-                                    >
-                                        Login to apply
-                                    </button>
-                                )}
-                            </div>
-                            <div className="w-full md:w-1/3">
-                                <Image
-                                    src={plan.bannerUrl}
-                                    alt={plan.title}
-                                    width={800}
-                                    height={400}
-                                    className="rounded-2xl mb-6 object-cover"
-                                />
-                                <div className="bg-primary text-center py-5 rounded-2xl shadow-lg">
-                                    <p className="text-2xl text-white"><strong>Premium:</strong> {plan.premium}</p>
+                                    {status === "loading" ? (
+                                        <button className="btn btn-disabled mt-4">Checking...</button>
+                                    ) : session ? (
+                                        <button className="btn btn-primary mt-4 rounded-full" onClick={openApplyModal}>
+                                            Apply Now
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="btn btn-outline mt-4"
+                                            onClick={() => signIn()}
+                                        >
+                                            Login to apply
+                                        </button>
+                                    )}
                                 </div>
-                            </div>
+                                <div className="w-full md:w-1/3">
+                                    <Image
+                                        src={plan.bannerUrl}
+                                        alt={plan.title}
+                                        width={800}
+                                        height={400}
+                                        className="rounded-2xl mb-6 object-cover"
+                                    />
+                                    <div className="bg-primary text-center py-5 rounded-2xl shadow-lg">
+                                        <p className="text-2xl text-white"><strong>Premium:</strong> {plan.premium}</p>
+                                    </div>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
-                </Slide>
+                    </Slide>
                 </div>
             </div>
 
             <div className="w-full md:w-10/12 mx-auto mb-20">
                 <Features></Features>
-                <Points></Points>
+
+                <div className="bg-blue-50 p-10 rounded-2xl">
+                    <Points></Points>
+                </div>
+
+
 
                 <dialog id="apply_modal" className="modal">
                     <form

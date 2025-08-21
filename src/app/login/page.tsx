@@ -46,28 +46,28 @@ export default function LoginPage() {
         showConfirmButton: false,
         timer: 1500
       });
-      router.push("/");
+      router.push("/insurance");
     }
   };
 
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-base-100 pt-30">
+    <div className=" pt-30">
       <div className='w-full md:w-10/12 mx-auto '>
         <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
 
 
           <div className="w-full md:w-2/3">
-            <div className="max-w-md mx-auto bg-gradient-to-r from-blue-800 to-indigo-900 shadow-lg p-6 rounded-2xl text-white">
-              <h1 className="text-4xl font-bold mb-4 text-center">Login</h1>
+            <div className="max-w-md mx-auto bg-gradient-to-r from-blue-800 to-indigo-900 shadow-lg p-6 rounded-2xl ">
+              <h1 className="text-4xl font-bold mb-4 text-center text-white">Login</h1>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
-                <input {...register("email")} placeholder="Email" className="w-full p-2 input rounded text-black" defaultValue="admin@gmail.com" />
+                <input {...register("email")} placeholder="Email" className="w-full p-2 input rounded " defaultValue="admin@gmail.com" />
                 {errors.email && <p className="text-red-500">{errors.email.message}</p>}
 
-                <input type={showPassword ? "text" : "password"} {...register("password")} placeholder="Password" className="w-full p-2 input rounded text-black" defaultValue="samsung77" />
+                <input type={showPassword ? "text" : "password"} {...register("password")} placeholder="Password" className="w-full p-2 input rounded " defaultValue="samsung77" />
                 {errors.password && <p className="text-red-500">{errors.password.message}</p>}
 
-                <div className="flex gap-3">
+                <div className="flex gap-3 text-white">
                   <input type="checkbox" className="checkbox text-white" checked={showPassword} onChange={() => setShowPassword(!showPassword)} />
                   Show Password
                 </div>
@@ -78,7 +78,7 @@ export default function LoginPage() {
                 </button>
               </form>
 
-              <div className="divider">OR</div>
+              <div className="divider text-white">OR</div>
 
               <div className="mt-4 text-center">
                 <button
@@ -90,7 +90,7 @@ export default function LoginPage() {
               </div>
 
               <div className="mt-3 text-center">
-                <p>Dont have any account? <Link href='/register'> <span className="text-blue-300">Register</span></Link> </p>
+                <p className="text-white">Dont have any account? <Link href='/register'> <span className="text-blue-300">Register</span></Link> </p>
               </div>
             </div>
 
