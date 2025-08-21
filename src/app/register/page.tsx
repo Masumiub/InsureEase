@@ -69,7 +69,7 @@ export default function RegisterPage() {
                 </button>
               </form>
 
-              <div className="divider text-white">OR</div>
+              <div className="divider text-white">OR</div>ç
 
               <div className="mt-4 text-center">
                 <button
